@@ -2,7 +2,7 @@ from math import log
 import numpy as np
 import os
 
-# 预处理
+# 预处理，VSM.py和dataset文件夹放在同一目录下
 file_list = os.listdir("dataset/")
 # 文档列表
 docs = []
