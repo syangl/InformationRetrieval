@@ -72,8 +72,6 @@ for file in file_list:
     doc = doc[8:] # 去掉"Author: "
     doc = doc.replace("\n", "")
     author_docs.append(doc.lower())
-# 去重
-#author_docs = list(set(author_docs))
 
 for doc in author_docs:
     split = doc.split(' ')
@@ -186,7 +184,7 @@ for doc_vec in doc_vectors:
 #从键盘输入
 # 诗歌名查询向量
 titleq = input("请输入查询诗歌名关键字：")
-titleq.lower()
+titleq = titleq.lower()
 split_titleq = titleq.split(' ')
 
 # titleq的tf
@@ -205,7 +203,7 @@ for term in sorted(titleq_tf_dict.keys()):
 
 # 作者查询向量
 authorq = input("请输入查询作者名：")
-authorq.lower()
+authorq = authorq.lower()
 split_authorq = authorq.split(' ')
 # authorq的tf
 authorq_tf_dict = dict.fromkeys(author_term_set, 0)
@@ -223,7 +221,7 @@ for term in sorted(authorq_tf_dict.keys()):
 
 #文档查询向量
 q = input("请输入查询文档内容关键字：")
-q.lower()
+q = q.lower()
 split_q = q.split(' ')
 
 # q的tf
@@ -252,9 +250,10 @@ for title_doc_vec in title_doc_vectors:
     res_cos = res_sum/title_mod_dict[j]
     title_rescos_list.append(res_cos)
     j += 1
-    print(f'TITLEQ and Doc{j}\'s similarity:', res_cos)
+    #print(f'TITLEQ and Doc{j}\'s similarity:', res_cos)
 #title_rescos_list = sorted(title_rescos_list)
-print("title_rescos_list", title_rescos_list)
+print(f"title_rescos_list[1-{j}]: ")
+print(title_rescos_list)
 print("=======================================================================")
 
 j = 0
@@ -266,9 +265,10 @@ for author_doc_vec in author_doc_vectors:
     res_cos = res_sum/author_mod_dict[j]
     author_rescos_list.append(res_cos)
     j += 1
-    print(f'AUTHORQ and Doc{j}\'s similarity:', res_cos)
+    #print(f'AUTHORQ and Doc{j}\'s similarity:', res_cos)
 #author_rescos_list = sorted(author_rescos_list)
-print("author_rescos_list", author_rescos_list)
+print(f"author_rescos_list[1-{j}]: ")
+print(author_rescos_list)
 print("=======================================================================")
 
 j = 0
@@ -280,9 +280,10 @@ for doc_vec in doc_vectors:
     res_cos = res_sum/mod_dict[j]
     rescos_list.append(res_cos)
     j += 1
-    print(f'Q and Doc{j}\'s similarity:', res_cos)
+    #print(f'Q and Doc{j}\'s similarity:', res_cos)
 #rescos_list = sorted(rescos_list)
-print("rescos_list", rescos_list)
+print(f"rescos_list[1-{j}]: ")
+print(rescos_list)
 print("=======================================================================")
 
 #####################################################################################################
